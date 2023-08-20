@@ -3,7 +3,7 @@
 
 ### Eclipse ###
 .metadata
-bin/
+bin/ 5
 tmp/
 *.tmp
 *.bak
@@ -130,3 +130,5 @@ build
 apache-tomcat-9.0.78
 doc
 util
+
+work01_java
