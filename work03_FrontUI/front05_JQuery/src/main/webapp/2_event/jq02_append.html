@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>val()|text(),html()</title>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){  
+		//$('button').click(function () {
+		//$('button').bind('click',function () {
+		//$('button').on('click',function () {
+		//one은 한 번만 실행된다. 
+		$('button').one('click',function () {
+			var text1 ="<p>KB IT's your Life</p>";
+			
+			// p태그 영역에 있는 내용을 받아와서 text2의 내용으로 사용할 것. 
+			// 태그 사이에 있는 내용을 받아거나 주입할 때 사용하는 함수는 태그를 선택자로 지정하고 
+				//text() or html()
+
+			// form에 있는 값을 가져오는 것은 val()
+			var text2 = $('p').html();
+			//alert(text2)
+			
+			//p태그를 생성 
+			var text3 = document.createElement('p');
+			text3.innerHTML="KB IT's Your Life"; //결론적으로 text1과 같은 형태.
+			
+			/* $('body')
+				.append(text1);
+				.append(text2)
+				.append(text3); */
+			$('body')
+				.append(text1,text2,text3);
+			
+		}); //click
+	});//ready
+</script>
+</head>
+<body>
+	<p>This is a paragraph.</p>
+	<button>Append text</button>	
+</body>
+</html>

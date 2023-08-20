@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//버튼이 가해졌을 때 함수가 실행되는 것이므로 onload는 필요가 없다. 
+	function push(){
+		//demo 영역을 찾아서 변수 demo에 할당
+		//hello getElementById라는 메시지를 출력해라. 
+		//-> 내용이 바뀐다. 
+		let demo = document.getElementById("demo") 
+		demo.innerHTML = "<h2 style='color:tomato'> Hello getElementById~~!!</h2>"
+		
+	};
+
+
+</script>
+</head>
+<body>
+
+<h1>What Can JavaScript Do?</h1>
+<p id="demo">JavaScript can change HTML content.</p>
+
+<!-- 버튼을 클릭할 때 push함수가 호출된다.
+	script 태그 안에서 push함수를 자바스크립트로 작성하면 됨. 
+	onclick 속성과 함수를 연결하는 방법
+ -->
+<button type="button" onclick="push()">Click Me!</button>
+
+</body>
+</html>

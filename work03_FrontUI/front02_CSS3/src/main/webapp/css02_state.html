@@ -1,0 +1,57 @@
+<!-- class 속성 : 공통적인 부분을 모아서 스타일 지정하고 그 중 특정 부분을 또 스타일 입히는 경우 -->
+<!-- id 속성 : 한 부분에 스타일 지정?-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Insert title here</title>
+<style>
+	.accent{
+		color : crimson;
+		font-size: 18px;
+	}
+	/* p.larger도 가능 */
+	.larger{
+		font-size: 24px;
+		font-style: italic;
+	}
+	
+	#box{
+		border: 1px solid red;
+		width : 100px;
+	}
+	
+</style>
+</head>
+<body>
+<!-- 
+block tag
+inline tag
+ -->
+<h2>State Attribute</h2>
+<form action="#">
+	<h3 id = "box">Enabled</h3>
+	<input type="text"/>
+	
+	<h3 >Disabled</h3>
+	<!-- 비활성화 -->
+	<input type="text" disabled = "disabled"/>
+	
+	<h3>Readonly</h3>
+	<!-- 읽기만 하는 속성, value 필수-->
+	<input type="text" readonly="readonly" value = "KB bank"/>
+	
+	<h3>Required</h3>
+	<!-- 값을 작성하지 않고 제출하려고 할 때 기입하도록 하는 것. 따라서 submit 타입의 인풋이 필수 -->
+	<input type="text" required="required" >
+	<input type="submit" value ="data send">
+	
+</form>
+<hr>
+<h1 class="accent">This heading will not be affected</h1>
+<p class="accent">This paragraph will be red and center-aligned.</p>
+<p class="accent larger">This paragraph will be red, center-aligned, and in a large font-size.</p> 
+</body>
+</html>

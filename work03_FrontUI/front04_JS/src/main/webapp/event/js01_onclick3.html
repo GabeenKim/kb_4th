@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+h1::selection{
+	background-color: black;
+	color:yellow;
+}
+</style>
+<script>
+	//아래와 같은 방식은 dom이 끝나기 전에 쿼리를 찾게하는 코드이므로 onload 함수를 이용해서 먼저 메모리에 로드 후 
+	//쿼리를 찾을 수 있도록 해야 한다. 
+	onload = function(){
+	//1.버튼을 찾는다. -> 여기에 onclick을 직접 주는 방식 
+		document.querySelector('#change').onclick = push;
+		
+		function push(){ 
+			document.querySelector('#demo').innerHTML = "<h2 style='color:crimson'> Hello getElementById~~!!</h2>"	
+		}
+	}
+
+</script>
+
+</head>
+<body>
+
+<h1>What Can JavaScript Do?</h1>
+<p id="demo">JavaScript can change HTML content.</p>
+
+<button id = "change" type="button">Click Me!</button>
+
+</body>
+</html>

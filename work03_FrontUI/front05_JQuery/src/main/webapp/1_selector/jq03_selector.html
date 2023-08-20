@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){  
+		//body 태그에 모든 자식 태그를 선택자로 지정. -> 모든 자식 : 부모선택자 공백*
+		/* $('body *').css('border','1px solid red'); */
+		
+		//body 태그에 바로 모든 직계 자식 태그를 선태자로 지정
+		$('body>*').css('border','1px solid red'); //->body의 직계자식은 div
+		
+	});
+</script>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>Apple</li>
+			<li>Tomato</li>
+			<li>Banana</li>
+			<li>Peach</li>
+			<li>Graph</li>
+		</ul>
+	</div>
+</body>
+</html>
+
+
+
+
+

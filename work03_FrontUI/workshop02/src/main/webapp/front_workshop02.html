@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+      <title>KB Star</title>
+
+<style type="text/css">
+	*{
+		box-sizing: border-box;
+	}
+	body{
+		background-color: black;
+	}
+    .wrap, header{
+    	color : white;
+    }
+    header{
+    	margin-left: 15px;
+    	margin-top: 20px;
+    }
+    .info{
+    	margin-top: 90px;
+    	margin-left: 50px;
+    	margin-right: 50px;
+    }
+    .description{
+    	margin-top : 30px;
+    }
+    .playlist-title{
+    	margin-top: 35px;
+    }
+    .play-button{
+    	margin-top : 30px;    	
+    	border-radius: 10px ;
+    	background-color:#5F04B4; 
+    	color: white;
+    	
+    	width:150px;
+    	height: 50px;
+    	
+    }
+    .description,.artist{
+    	color: #6E6E6E;
+    }
+    .artist img{
+    	width:30px;
+    	border-radius:100%;
+    }
+    hr{
+    	border: 1px solid #6E6E6E;
+    	margin-top: 40px;
+    	margin-left: -20px;
+    	margin-right: -30px;
+    }
+    .hot-badge{
+    	margin-bottom:50px;
+    	
+    	background-color : #424242;
+    	border-radius: 5px; ;
+    	
+    	font-weight:bolder;
+    	font-size: 15px;
+    	padding: 3px;
+    	color: #6E6E6E;
+    	
+    	position: relative;
+    	left : 3px;
+		top : -15px;
+    }
+    .cover-image{
+    	width: 200px;
+    	height: 220px;
+    }
+</style>
+</head>
+
+<body>
+    <header>
+      <div class="wrap">KB Music</div>
+    </header>
+    <main class="wrap">
+      <div class="info">
+        <div class="cover">
+          <img
+            class="cover-image"
+            src="img/cafe.jpg"
+            alt="카페에서 일할 때 커버 이미지"
+         >
+        </div>
+        <h1 class="playlist-title">
+          카페에서 일할 때
+          <span class="hot-badge"> 인기 </span>
+        </h1>
+        <div class="artist">
+          <img
+            src="img/logo.jpg"
+            alt="kb 프로필"
+            class="artist-profile"
+         >
+          	KB Star
+        </div>
+        <div class="description">
+          차분하게 흐르는 따뜻한 음악과 함께하는 휴식.KB Music 에디터가
+          매달 업데이트하는 플레이리스트입니다. 마음에 드는 곳이 있다면 보관함에
+          추가해 보세요.
+        </div>
+        <button class="play-button">▶️ 지금 듣기</button>
+        <hr>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+package com.edu.exception;
+
+public class DuplicateSSNException extends Exception{
+	public DuplicateSSNException() {
+		this("This is DuplicationSSNException...");
+	}
+	public DuplicateSSNException(String message) {
+		super(message);
+	}
+}

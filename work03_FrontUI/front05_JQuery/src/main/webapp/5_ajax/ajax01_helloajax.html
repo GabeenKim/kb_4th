@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+	$('#JQueryAjax').click(function() {
+		//ajax
+		$.ajax({
+			//요청
+			type:"get",
+			//url : "서버 페이지 이름", //우리는 프로그램이 수행되고 데이터(문자,json(객체))를 받았다고 친다. 
+			url : "./bank.json",
+			
+			
+			//응답 -> 성공했을 경우만 해당 데이터를 인자 값으로 사용해서 함수 실행
+			success :function(resultdata){
+				alert(resultdata.data);
+			},
+			//지금은 확인 못 하나 추후 이런식으로 에러 처리하면 됨. 
+			error: function(){
+				alert("응답시간 지연~~~");
+			},
+			timeout:1000 //1초 동안 서버로부터 응답이 없으면 에러 발생시킴. (비동기인 경우)
+			
+		});//ajax
+	});//click
+});//ready
+
+</script>
+
+</head>
+<body>
+	<input type= "button" value="JQueryAjax" id = "JQueryAjax">
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		function push(){
+			alert("버튼이 눌러졌어요.");
+		}
+	
+	</script>
+	<style>
+	/*전체 회원의 가로 사이즈를 지정...body 태그를 선택자로 지정(전체를 위해)*/
+	body{
+		width: 600px;
+		height: 600px;
+		margin: 0 auto;
+	}
+	/*아이디 영역 선택 시 앞에 # */
+	#order{
+		float: left;
+		width: 250px;
+	}
+	
+	#unorder{
+		float: right;
+		width: 250px;
+	}
+	/* 아이디의 값이 header인 태그를 선택자로 지정, 글자색을 오렌지로 지정 */
+	
+	#header{
+		color: tomato;
+		margin-left: 150px;
+	}
+
+	/* 오더, 언오더를 선택자로 지정하고 배경색을 gray로 지정 -> 선택자 여러개는 ,로 연결 */
+	#order, #unorder{
+		background: gray;
+		border : 1px solid black;
+	}
+	button{
+		both:clear
+	}
+	</style>
+	
+</head>
+
+<body>
+
+	<div id="header">
+		<h1>This is heading 1</h1> 
+		<h2>This is heading 2</h2> 
+		<h3>This is heading 3</h3> 
+		
+	</div>
+	
+	<div id = "order">
+		<p> Order List</p>
+		<p> 순번을 가지는 목록 리스트 </p>		
+		<p>Blocking tag </p>		
+		<ol>
+			<li><a href="http://java.sun.com">Java</a></li>	
+			<li>Python</li>
+			<li><a href="www.w3schools.com">HTML</a></li>
+			<li>View.jS</li>
+		</ol>
+	</div>
+
+	<div id = "unorder">
+		<p> Order List</p>
+		<p> 순번을 안 가지는 목록 리스트 </p>		
+		<p>Blocking tag </p>		
+		<ul>
+			<li><a href="http://java.sun.com">Java</a></li>	
+			<li>Python</li>
+			<li><a href="www.w3schools.com">HTML</a></li>
+			<li>View.jS</li>
+		</ul>
+	</div>
+	<hr>
+	
+	<!-- 버튼 클릭하면 팝업창 하나 뜰 수 있도록 작성 -->
+	<button onclick ='push()'>눌러주세요</button>
+	
+</body>
+</html>

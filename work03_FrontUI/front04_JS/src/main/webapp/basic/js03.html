@@ -1,0 +1,50 @@
+<!--  
+	자바스크립트에서 함수를 선언하는 방법 
+	1. 익명 함수 선언 법
+	2. 선언적 함수 점금법 
+	3. EQM015 (es6 문법)
+		-> Arrow 함수 선언법 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+//[1] 익명 함수 재정의 
+/* var func = function(){
+	alert("funcA...");
+
+};
+//자바는 객체 올려놓는 순간에 올리기에 가능하나, 스크립트 기반의 언어는 한 줄 한 줄 실행되기에 호출하는 시점이 중요함. 
+func();
+
+//중복된 함수명인데도 에러가 안 뜸. 자바의 오버라이딩 같은 것... 
+var func = function(){
+	alert("funcB...");
+
+};
+func(); */
+
+//[2] 선언적 함수 
+func();
+function func(){
+	alert("funcA...");
+}
+//스크립트 기반의 랭귀지는 첫 줄부터 실행되는 것이 맞으나, 단! 선언적 함수로 선언했을 때는 예외이다.
+//메모리에 선언적 함수를 미리 로드하고 그 후에 사용하기 때문에 아무데서나 호출 가능하다. 
+function func(){
+	alert("funcB...");
+}
+//선언적 함수 재정의 시에는 덮어 씀. 
+
+
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

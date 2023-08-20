@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	*{
+		box-sizing: border-box;
+	}
+	body{
+		background-color: #f9fafc;
+		margin: 60px;
+	}
+	.container{
+		border: 5px dashed #cacfd9;
+		width: 500px;
+		height: 500px;
+		
+		/* flex-direction : row가 디폴트로 동작한다.
+			왼쪽에서 오른쪽으로 요소가 배치된다.   
+			가로축 정렬이 일어나면 상하를 꽉 채우게 됨.*/
+		display : flex;
+		
+		
+		/* 교차축 정렬 : 위에서 아래로 요소가 배치됨.
+			교차축 정렬이 일어나면 좌우를 꽉 채우게 됨.  */
+		/* flex-direction: column;
+				//  	: column-reverse;
+		 */
+		flex-direction: row-reverse;
+		
+	}
+	.box{
+		border-radius: 15px;
+		color: #f9fafc;
+		padding: 30px;
+	}
+	.red{
+		background-color: Tomato;
+	}
+	.green{
+	 	background-color: MediumSeaGreen;
+	 	
+	 }
+	 .blue{
+	 	background-color: DodgerBlue;
+	 }
+
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="red box">RED</div>
+	<div class="green box">GREEN</div>
+	<div class="blue box">BLUE</div>
+</div>
+</body>
+</html>

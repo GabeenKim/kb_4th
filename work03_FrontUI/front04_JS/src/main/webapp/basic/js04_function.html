@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>선언적함수 재정의 동작원리..1</title>
+<script>
+	function calc(x,y) {
+    	return x + y;
+	}
+	console.log(calc(5,3));//
+	
+	//선언적 함수는 먼저 메모리에 로드. 따라서 최종 calc함수는 이 함수이다. 
+	function calc(x,y) {
+    	return x * y;
+	}
+	//따라서 모든 콘솔이 출력은 15이다.
+	console.log(calc(5,3));
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+	$('#AjaxBtn').click(function() {
+		//1. 폼에 입력된 값을id 변수로 받아온다. 
+		let id = $('#userId').val();
+		
+		//2. 비동기 시작 ...jquery
+		$.ajax({
+			//요청 
+			type : "get",
+			url : "./members.json",
+			data : {"id" : id},
+			
+			//응답 : 인자값 항상 넣어줘야 함. 
+			//서버 측에서 응답하는 데이터는 success함수에 인자 값에 통으로 담긴다. 
+			success : function (data) {
+				//alert(data.members); //members로 접근하면 객체 4개 확인 가능. 얘가 배열임. 
+				
+				var members = data.members;
+				let id = "";
+				//each함수를 사용해서 각 멤버들의 id값을 alert창으로 출력. 
+				$.each(members, function (index, item) {
+					//id += item.id+" ";
+					
+					//내용을 resultView영역에 출력 -> html()을 사용한 경우는 마지막 값 하나만 출력..? ㅜ
+					$('#resultView').append("<h3><font color = tomato>"+item.id+"</font></h3>");
+				})//반복
+				//alert(id);
+				
+			}//callback
+		});//ajax
+	})//click
+	
+	
+});//ready
+</script>
+</head>
+<body>
+	ID <input type="text" name = "userId" id = "userID">
+	<input type="button" value = "AjaxBtn" id = "AjaxBtn">
+	
+	<div id = "resultView"></div>
+</body>
+</html>

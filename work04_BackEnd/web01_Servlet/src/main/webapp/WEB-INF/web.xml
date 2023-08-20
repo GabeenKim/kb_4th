@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+    <servlet>
+    <!-- web,servlet.generic.MyGenericServlet 을 MyGenericServlet 으로 Mapping 해줌 -->
+        <servlet-name>MyGenericServlet</servlet-name>
+        <servlet-class>web.servlet.generic.MyGenericServlet</servlet-class>
+        <!-- package 의 총 명을 사용해야함 -->
+    </servlet>
+
+    <!-- Client Mapping -->
+    <servlet-mapping>
+        <servlet-name>MyGenericServlet</servlet-name>
+        <url-pattern>/My</url-pattern>
+        
+        <!-- url pattern 에는 반드시 / 로 시작해야 함 -->
+        <!-- Server 내부 Mapping, 하지만 서버 내부에서는 보안 상 hidding 해주는 것이 좋음 => 이중 Mapping -->
+        <!-- Client 에서는 /My 로 요청, 그럼 servlet 의 MyGenericServlet 이 받는다는 의미 -->
+        <!-- Client-Mapping 이라고 함 -->
+    </servlet-mapping>
+</web-app>

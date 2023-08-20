@@ -1,0 +1,43 @@
+
+<!--
+	자바스크립트에서 변수 사용법
+	var라는 키워드만 사용했을 경우의 문제점.
+	
+  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script>
+
+var myName = "Peter"; //전역변수
+name = "James"; //자동으로 전역변수가 된다. 
+
+console.log(myName);
+console.log(name);
+
+/* function showInfo(){
+	age =33;//로컬 변수가 아닌 전역으로 잡힌다. 
+	console.log("local?? ",age);
+}
+
+showInfo()
+console.log(age); */
+
+//전역변수인 경우가 너무 광범위하기에 지역변수임을 나타내기 위해 let을 사용
+function showInfo(){
+	age =33;//로컬 변수가 아닌 전역으로 잡힌다. 
+	console.log("local?? ",age);
+}
+
+showInfo()
+//console.log(age);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

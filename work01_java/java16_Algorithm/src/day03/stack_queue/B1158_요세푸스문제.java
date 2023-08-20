@@ -1,0 +1,45 @@
+package day03.stack_queue;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+import java.util.StringTokenizer;
+
+import javax.management.Query;
+
+public class B1158_요세푸스문제 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("input.txt")));	//	파일로부터 읽기
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		int N = Integer.parseInt(st.nextToken()); 
+		int K = Integer.parseInt(st.nextToken());
+		Queue<Integer> q = new LinkedList<>();
+		StringBuilder sb = new StringBuilder();
+		
+		// [0] 1 ~ N을 큐에 저장
+		for (int i=1; i<=N; i++)	q.add(i);
+		
+		sb.append("<");
+		// [1] K-1개는 뒤로 붙이고, 1개는 poll
+		// 큐에 데이터가 있는 동안 반복처리
+		while (q.size()>0) {
+			for (int j=0; j<K-1; j++) {
+				q.add(q.poll());
+			}
+			
+			sb.append(q.poll()+", ");
+		}
+		sb.delete(sb.length()-2, sb.length());
+		sb.append(">");
+		System.out.println(sb);
+		
+	}
+
+}

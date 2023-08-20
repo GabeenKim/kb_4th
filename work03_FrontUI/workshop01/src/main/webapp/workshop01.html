@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body{
+		width : 800px;
+		margin: 0 auto ;
+		border : 3px solid skyblue;
+		padding-left:60px;
+		padding-bottom: 40px;
+	}
+	
+	header{
+		text-align: center;
+	}
+	fieldset{
+		width: 700px;
+	}
+	img{
+		margin : 0 210px;
+		padding-bottom: 10px;
+	}
+		
+	p{
+		margin-top:0;
+		float: left;
+	}
+	p1{
+		margin-left:10px;
+		text-decoration: line-through;
+	}
+	p2{
+		margin-left:10px;
+		text-decoration: underline;
+	}
+	#footer{
+		clear : both;
+	}
+	
+</style>
+
+</head>
+<body>
+	<header>
+		<h1>밀 수</h1>
+		<h2>==== KB ★ 영화예매 ====</h2>
+	</header>
+	
+	<img src= "https://i.namu.wiki/i/0sG1yBYEUObUTtJg_0O9AGxY1TPT_YxdtE-rwoBn4wpZvkDmCRyqmTJ1MrljJXGiZVhgR06OOsVg8HEnkG8dXQ.webp" width="360px">
+
+	상영관 <select id ="place">
+	<option value ="place_1">CGV </option>
+	<option value ="place_1">CGV 선릉</option>
+	<option value ="place_1">CGV 역삼</option>
+	</select>
+	날짜 선택 <input type="date" name ="date"><br>
+	
+	<fieldset>
+	<legend>시간선택</legend>
+	<input type="radio" name="time" value = "08:30" checked >08:30
+	<input type="radio" name="time" value = "08:30"  >11:00
+	<input type="radio" name="time" value = "08:30"  >14:20
+	<input type="radio" name="time" value = "08:30"  >17:25
+	<input type="radio" name="time" value = "08:30"  >20:10
+	<input type="radio" name="time" value = "08:30"  >23:05
+	</fieldset>
+	
+	<br>
+	<div style:inline>
+		<p>요금</p>
+		<p1>￦9,000</p1>
+		<p2>￦5,000</p2>
+	</div>
+	
+	<div id = "footer">
+	인원 <input type="text" name="per" placeholder="0" ><br><br>
+	금액 <input type="text" name="price" placeholder="0"><br><br>
+	
+	<input type="checkbox" checked>옵션
+	
+	<fieldset>
+	<input type="checkbox">팝콘 
+	<input type="checkbox">콜라 
+	</fieldset>
+		
+	
+</body>
+</html>
