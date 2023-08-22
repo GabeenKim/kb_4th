@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 라이브러리 객체를 빈 컨테이너 내부에 생성 -->
+<bean id="diceA" class ="spring.service.dice.impl.DiceAImpl" />
+<bean id="diceB" class ="spring.service.dice.impl.DiceBImpl" />
+<bean id="diceC" class ="spring.service.dice.impl.DiceCImpl" />
+
+<!-- 사용자 정의 빈 :: player01 :: A주사위를 주입 ::생성자 주입-->
+<bean id="player01" class ="spring.service.dice.play.Player02" >
+	<constructor-arg ref = "diceA" />
+</bean>
+
+<!-- 사용자 정의 빈 :: player02 :: B주사위를 주입 :: 생성자 주입 -->
+<bean id="player02" class ="spring.service.dice.play.Player02" >
+	<constructor-arg ref = "diceB" />
+</bean>
+
+<!-- setter 주입 :: setter의 이름이 setDice이므로 입력받을 요소인 name = "dice"와 넣어줄 객체명 ref="diceC" -->
+<!-- 사용자 정의 빈 :: player01 :: C주사위를 주입 :: setter-->
+<bean id="player03" class ="spring.service.dice.play.Player02" >
+	<property name="dice" ref="diceC" />
+</bean>
+
+<!-- 사용자 정의 빈 :: player01 :: A주사위를 주입 :: setter-->
+<bean id="player04" class ="spring.service.dice.play.Player02" >
+	<property name="dice" ref="diceA" />
+</bean>
+
+
+<!-- 사용자 정의 빈 :: player01 :: A주사위를 주입 :: setter-->
+<bean id="player05" class ="spring.service.dice.play.Player02" >
+	<property name="message" value="주사위 게임" />
+</bean>
+</beans>

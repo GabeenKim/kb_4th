@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+
+
+
+<!-- 빈 생성과 주입관계 설정  -->
+<!-- 라이브러리 객체를 빈 컨테이너 내부에 생성 -->
+<bean id="loan" class ="com.itskb.myapp.calculator.LoanInterestCalculator" />
+<bean id="saving" class ="com.itskb.myapp.calculator.SavingInterestCalculator" />
+
+<!-- setter 주입 
+:: setter함수에 입력받을 요소를 name으로 지정 
+:: 그 다음 위에 생성한 객체 중에서 넣어줄 객체명을 ref에 작성
+-->
+<!--그리고 이 값을 주입받는 곳은 해당 빈 아이디를 가지는 곳?  -->
+<bean id="interestCalculatorService" class ="com.itskb.myapp.calculator.InterestCalculatorService">
+	<property name="loanInterestCalculator" ref="loan"></property>
+	<property name="savingInterestCalculator" ref="saving"></property>
+</bean>
+
+
+</beans>
