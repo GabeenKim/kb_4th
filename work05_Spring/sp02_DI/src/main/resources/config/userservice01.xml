@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- User user 01 = new User();
+	user01.setUserId("01유저"); 
+	user01.setAge("01");
+-->
+
+<!-- 사용자 정의 빈 생성 :: id = user01 | setter주입 | 어떤 값을 주입하는지 확인하기(이 경우는 단순 파라미터 id=01유저, age=01)  -->
+<!-- 단순한 값이 파라미터일 때는 value, 아니면 ref -->
+<bean id="user01" class ="spring.service.domain.User">
+	<property name="userId"  value = "01유저"></property>
+	<property name="age"  value = "01"></property>
+</bean>
+
+<!-- API 빈. 자바가 만든 클래스 :String 클래스를 가져다가 이 빈의  id를 password라고 지정. 그 후 생성자 주입을 통해 7777이라는 값을 빈에 주입 -->
+<bean id="password" class="java.lang.String">
+	<constructor-arg value ="7777"/>
+</bean>
+
+<!-- 사용자 정의 빈 ::id = user02 | setter주입 | 단순 파라미터 id=02유저, age=02, password = 위에서 정의한 빈을 참조(객체참조)  -->
+<bean id="user02" class ="spring.service.domain.User">
+	<property name="userId"  value = "02유저" />
+	<property name="age"  value = "02" />
+	<property name="password" ref="password" />
+</bean>
+
+<!-- 사용자 정의 빈 :: DI (값 주입) X -->
+<bean id="user03" class ="spring.service.domain.User"/>
+
+<!-- 사용자 정의 빈 ::id = user04 | 생성자 주입 | 단순 파라미터 id=04유저, age=04, password =0404  -->
+<bean id="user04" class ="spring.service.domain.User">
+	<constructor-arg value = "04유저" index = "" />
+	<constructor-arg value = "0404" index ="1"/>
+	<constructor-arg value = "04" index ="0" />
+</bean>
+
+<!-- 사용자 정의 빈 ::id = user05 | 생성자 주입 | 단순 파라미터 id=05유저, age=05, password = 0505  -->
+<bean id="user05" class ="spring.service.domain.User">
+	<constructor-arg value = "05유저" index = "2"/>
+	<constructor-arg value = "0505" name = "password"/>
+	<constructor-arg value = "05" type ="int" />
+</bean>
+
+
+</beans>
