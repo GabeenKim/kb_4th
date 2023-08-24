@@ -35,8 +35,6 @@ public class MyBatisTestApp11 {
 		MyBatisUserServiceImpl11 userService = new  MyBatisUserServiceImpl11();
 		userService.setUserDAO(dao);
 		
-		//new가 나오면 컨테이너를 통해 생성되지 않는 것. 따라서 DI container가 생성할 수 있도록 DI를 연결해줘야 한다. 
-		
 		//==> Test 용 User instance 생성  
 		User user = new User("user04","주몽","user04",null,1);
 		

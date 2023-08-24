@@ -12,12 +12,12 @@ import java.util.Date;
 public class User implements Serializable {
 
 	///Field
-    private String userId; 			// 회원 ID user_id
-    private String userName;		// 회원 이름  user_name
+    private String userId; 			// 회원 ID 
+    private String userName;		// 회원 이름 
     private String password;     // 비밀번호 
     private Integer age;    			// 나이 :: Integer wrapper class 사용 :: 추후 용도 확인  
     private int grade;    				// 등급 :: int primitive 사용 :: :: 추후 용도 확인 
-    private Timestamp regDate	= new Timestamp(new Date().getTime()); // 가입일자  reg_date
+    private Timestamp regDate	= new Timestamp(new Date().getTime()); // 가입일자 
     private boolean active; 
     
     ///Constructor

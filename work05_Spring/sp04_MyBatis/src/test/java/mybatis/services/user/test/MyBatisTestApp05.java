@@ -33,7 +33,7 @@ public class MyBatisTestApp05 {
 		//==>@@@ null값을 허용할려면 SqlMapConfig01.xml에 Settings 태그를 부착해야한다.@@@
 		User user = new User("user04","주몽","user04",null,1);
 		user.setRegDate(null);
-		//MyBatis는 null을 허용하는데 Oracle이 null값을 허용하지 않음. 따라서 null값은 못 받아들임. 따라서 설정해줘야 함. -> sqlMapConfig01에서
+		
 	
 		//1. User05.addUser Test  :: users table age/grade/redDate 입력값 확인할것 : OK 
 		System.out.println(":: 1. addUser(INSERT)  ? "

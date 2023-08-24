@@ -26,22 +26,26 @@ public class MyBatisTestApp07 {
 			//==> Test 용 UserVO instance 생성  
 			User user = new User("user01","홍길동","user01",new Integer(30),1);
 		
-//			//1. User07.getUserList01 Test 
-//			System.out.println(":: 1. getUserList(SELECT)  ? ");
-//			TestUtil.printList((List)session.selectList("UserMapper07.getUserList01",user));
+			//1. User07.getUserList01 Test ..아이디가 user01인 사람을 검색
+			System.out.println(":: 1. getUserList01(SELECT)  ? ");
+			TestUtil.printList((List)session.selectList("UserMapper07.getUserList01",user));
 			
-			//2. User07.getUserList01 Test -> 30살인 사람만 검색
+		
+			//2. User07.getUserList Test 
+			
 			System.out.println(":: 2. getUserList(SELECT)  ? ");
 			user.setUserName(null);
 			TestUtil.printList((List)session.selectList("UserMapper07.getUserList",user) );
 			
-			//3. User07.getUserList01 Test  -> 이름이 홍길동인 사람만
+			
+		
+			//3. User07.getUserList Test 
 			System.out.println(":: 3. getUserList(SELECT)  ? ");
 			user.setUserName("홍길동");
 			user.setAge(null);
 			TestUtil.printList((List)session.selectList("UserMapper07.getUserList",user) );
 		
-			//4. User07.getUserList01 Test ..이경우는 조건을 안준거와 동일한 결과가 나온다.. => 모든 사람. 
+			//4. User07.getUserList Test ..이경우는 조건을 안준거와 동일한 결과가 나온다..
 			System.out.println(":: 4. getUserList(SELECT)  ? ");
 			user.setUserName(null);
 			user.setAge(null);

@@ -12,30 +12,30 @@ import mybatis.services.user.UserService;
 
 @Service
 public class MyBatisUserServiceImpl13 implements UserService{
+	
 	@Autowired
-	private UserDAO userDAO;
+	private UserDAO userDAO;	
+
 
 
 	@Override
 	public void addUser(User user) throws Exception {
-		userDAO.addUser(user);
-		
+		userDAO.addUser(user);		
 	}
 
 	@Override
 	public void updateUser(User user) throws Exception {
-		userDAO.updateUser(user);
-		
+		userDAO.updateUser(user);		
 	}
 
 	@Override
-	public User getUser(String userId) throws Exception {
+	public User getUser(String userId) throws Exception {		
 		return userDAO.getUser(userId);
-		 
 	}
 
 	@Override
 	public List<User> getUserList(User user) throws Exception {
+		
 		return userDAO.getUserList(user);
 	}
 

@@ -39,8 +39,7 @@ public class 	MyBatisTestApp02 {
 			System.out.println( "<"+ ( i +1 )+"> 번째 회원.."+ list.get(i).toString() );
 		}
 		System.out.println("\n");
-		
-		//user로 시작하는 유저를 찾는다.
+	
 		//1. getUser :: # 대입자를 이용한 like 연산자 검색 
 		// ==> 검색결과 존재 확인 :: %와일드카드 직접입력경우 
 		System.out.println(":: 1. user로시작하는 userId User(SELECT)  ? ");
@@ -53,7 +52,7 @@ public class 	MyBatisTestApp02 {
 	
 		//2.  getUser :: # 대입자를 이용한 like 연산자 검색 ==> 검색결과 없는것 확인
 		User user = new User();
-		user.setUserId("01");  //아규먼트가 객체이지만, 결론적으로는 id가 01인 사람을 찾아야 함.
+		user.setUserId("01");
 		
 		System.out.println(":: 2. 01로 끝나는 userId User(SELECT)  ? ");
 		 list = session.selectList("UserMapper02.getUser02",user);
@@ -65,8 +64,7 @@ public class 	MyBatisTestApp02 {
 		
 		//3. getUser :: # 대입자를 이용한  like 연산자 검색 
 		//				==> 검색결과 존재 확인 :: %와일드카드 직접입력경우
-		user.setUserId("%01"); //01로 끝나는 사람. 
-		
+		user.setUserId("%01");
 		System.out.println(":: 3. 01로 끝나는 userId User(SELECT)  ? ");
 		list = session.selectList("UserMapper02.getUser02",user);
 		for (int i =0 ;  i < list.size() ; i++) {
@@ -75,7 +73,6 @@ public class 	MyBatisTestApp02 {
 		System.out.println("\n");
 		
 		
-		////////////////////////////////////////////////////////////////이 아래가 완벽한 쿼리문 테스트 한 것.
 		//4. getUser :: $ 대입자를 이용한 like 연산자 검색==> 검색결과 존재 확인 
 		System.out.println(":: 4. user로시작하는 userId User(SELECT)  ? ");
 		list = session.selectList("UserMapper02.getUser03","user");
@@ -86,7 +83,7 @@ public class 	MyBatisTestApp02 {
 		
 		
 	
-		//5. getUser :: $ 대입자를 이용한 like 연산자 검색==> 검색결과 존재 확인 
+		//6. getUser :: $ 대입자를 이용한 like 연산자 검색==> 검색결과 존재 확인 
 		user.setUserId("01");
 		System.out.println(":: 5. 01로 끝나는 userId User(SELECT)  ? ");
 		 list = session.selectList("UserMapper02.getUser04",user);
@@ -94,6 +91,8 @@ public class 	MyBatisTestApp02 {
 			System.out.println( "<"+ ( i +1 )+"> 번째 회원.."+ list.get(i).toString() );
 		}
 		System.out.println("\n");
+	
+	
 	
 	}//end of main
 }//end of class

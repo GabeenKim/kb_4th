@@ -2,10 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
-<mapper namespace="UserMapper10">	
-
-	<!-- 결과값을 명시적으로 지정하면 select태그 -> 이때 컬럼명과 필드명이 다른 경우 as 안 쓰도록 설정 -->
+<mapper namespace="UserMapper10">		
 	<resultMap type="user" id="userSelectMap">
 		<result property="userId" column="user_id"/>
 		<result property="userName" column="user_name"/>
@@ -15,39 +12,43 @@
 		<result property="regDate" column="reg_date"/>
 	</resultMap>
 	
-	<!-- sql 구문의 모듈화 :: 자주 사용하는 쿼리문은(select에서 컬럼명, insert에서 컬럼면) 따로 모듈화 해준다.
-		 sql, include-->
+	<!--  SQL 구문의 모듈화 :: sql, include -->
 	<sql id="select-users">
-		SELECT user_id, user_name, password, age, grade, reg_date
+		SELECT
+		user_id ,
+		user_name ,
+		password,
+		age,
+		grade,
+		reg_date
 		FROM users
 	</sql>
-	
-	<sql id="orderdy-userid-desc">
+	<sql id="orderby-userid-desc">
 		ORDER BY user_id DESC
 	</sql>
 	
-	<!-- 정적 sql -->
-	<select id="getUser" parameterType="string" resultMap="userSelectMap">
+	<!-- 정적인 쿼리문-->	
+	<select id="getUser" parameterType="user" resultMap="userSelectMap">
 		<include refid="select-users" />
-		WHERE password = #{VALUE}
-	</select>
-	<!-- 동적 sql -->
+		WHERE password=#{password}
+	</select>		
+
+	<!-- 동적인 쿼리 -->
 	<select id="getUserList" parameterType="user" resultMap="userSelectMap">
 		<include refid="select-users" />
 		<where>
-			<if test="userName != null">
+			<if test="userName !=null">
 				user_name LIKE #{userName}
 			</if>
-			<if test="age != null">
-				OR age = #{age}
+			<if test="age !=null">
+				OR age LIKE #{age}
 			</if>
-			
-		</where>
-		<include refid="orderdy-userid-desc"></include>
+		</where>	
+		<include refid="orderby-userid-desc" />
 	</select>
 	
-	<!-- 추가 :: addUser, updateUser, removeUser -->
-	<insert id="addUser"  parameterType="user" >
+	<!-- 추가  :: addUser, updateUser, removeUser-->
+	<insert id="addUser" parameterType="user">
 		INSERT 
 		INTO users(user_id, user_name, password, age, grade, reg_date)
 		VALUES(
@@ -56,20 +57,32 @@
 			#{password},
 			#{age},
 			#{grade},
-			#{regDate}		
+			#{regDate}			
 		)
-	</insert>
+	</insert>	
 	
 	<update id="updateUser" parameterType="user">
 		UPDATE users
-		SET user_name = #{userName}
-		WHERE user_id = #{userId}
+		SET user_name=#{userName}
+		WHERE user_id=#{userId}
 	</update>
 	
 	<delete id="removeUser" parameterType="string">
-		DELETE users
-		WHERE user_id = #{VALUE}
+		DELETE
+		users
+		WHERE user_id=#{VALUE}
 	</delete>
-	
-	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

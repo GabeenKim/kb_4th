@@ -36,7 +36,7 @@ public class MyBatisTestApp08 {
 		TestUtil.printList( (List)session.selectList("UserMapper08.getUserList",user) );
 		
 		//3. UserMapper08.getUserList Test 
-		System.out.println(":: 3. getUserList(SELECT)  ? ");
+		System.out.println(":: 3. getUserList01(SELECT)  ? ");
 		user.setUserName("홍길동");
 		user.setAge(null);
 		TestUtil.printList( (List)session.selectList("UserMapper08.getUserList",user));
@@ -47,6 +47,6 @@ public class MyBatisTestApp08 {
 		user.setAge(null);
 		TestUtil.printList( (List)session.selectList("UserMapper08.getUserList",user) );
 	
-	
+		
 	}//end of main
 }//end of class

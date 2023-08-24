@@ -3,41 +3,42 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-<properties resource="config/dbconn.properties"></properties>
-
-<!-- oracle에서는 null값을 허용하지 않기에 이것을 위한 옵션을 지정해야함. MySQL에서는 이 부분이 기본적으로 내장됨. -->
-<settings>
-	<setting name="jdbcTypeForNull" value="NULL"/>
-</settings>
-
-<!-- vo패키지를 지정하면 알아서 vo클래스 명으로 alias 규칙이 적용됨.  -->
-<typeAliases>
-	<!-- <typeAlias type="mybatis.services.domain.User" alias="user"/> -->
-	<package name="mybatis.services.domain"/>
-</typeAliases>
-
-<environments default="DEVELOPMENT">
-	<environment id="DEVELOPMENT">
-		<transactionManager type="JDBC" />
-		<dataSource type="UNPOOLED">
-			<property name="driver" value="${jdbc.oracle.driver}"/>
-			<property name="url" value="${jdbc.oracle.url}"/>
-			<property name="username" value="${jdbc.oracle.username}"/>
-			<property name="password" value="${jdbc.oracle.password}"/>
-			
-		</dataSource>
-	</environment>
-</environments>
-
-<mappers>
-	<mapper resource="mapper/mybatis-userservice-mapping.xml"/>
-	<mapper resource="mapper/mybatis-userservice-mapping01.xml"/>
-	<mapper resource="mapper/mybatis-userservice-mapping02.xml"/>
-	<mapper resource="mapper/mybatis-userservice-mapping03.xml"/>
-	<mapper resource="mapper/mybatis-userservice-mapping05.xml"/>
-	<mapper resource="mapper/mybatis-userservice-mapping07.xml"/>
-	<mapper resource="mapper/mybatis-userservice-mapping08.xml"/>
-	<mapper resource="mapper/mybatis-userservice-mapping10.xml"/>
-</mappers>
+	<properties resource="config/dbconn.properties" />
+	
+	<!-- 오라클에서는  null값을 허용하는 옵션을 지정 :: MySQL에서는 이부분이 기본적으로 내장되어 있다. -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>
+		<!-- <typeAlias type="mybatis.services.domain.User"  alias="user"/> -->
+		<package name="mybatis.services.domain"/>
+	</typeAliases>
+	
+	<environments default="DEVELOPMENT">
+		<environment id="DEVELOPMENT">
+			<transactionManager type="JDBC"/>
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${jdbc.oracle.driver}"/>
+				<property name="url" value="${jdbc.oracle.url}"/>
+				<property name="username" value="${jdbc.oracle.username}"/>
+				<property name="password" value="${jdbc.oracle.password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="mapper/mybatis-userservice-mapping.xml"/>
+		<mapper resource="mapper/mybatis-userservice-mapping01.xml"/>
+		<mapper resource="mapper/mybatis-userservice-mapping02.xml"/>
+		<mapper resource="mapper/mybatis-userservice-mapping03.xml"/>
+		<mapper resource="mapper/mybatis-userservice-mapping05.xml"/>
+		<mapper resource="mapper/mybatis-userservice-mapping07.xml"/>
+		<mapper resource="mapper/mybatis-userservice-mapping08.xml"/>
+		<mapper resource="mapper/mybatis-userservice-mapping10.xml"/>
+	</mappers>
 	
 </configuration>
+
+
+

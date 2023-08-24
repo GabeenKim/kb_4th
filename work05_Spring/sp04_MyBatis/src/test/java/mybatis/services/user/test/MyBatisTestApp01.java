@@ -45,7 +45,7 @@ public class MyBatisTestApp01 {
 		System.out.println(":: 1. get(SELECT)  ? "+user.toString());
 		System.out.println("\n");
 		
-		//2. findUserId :: 특정 userid / password 정보
+		//2. findUserId :: 특정 userid / password 정보...
 		user.setUserId("user03");
 		user.setPassword("user03");
 		String name = (String)session.selectOne("UserMapper01.findUserId", user);

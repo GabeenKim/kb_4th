@@ -39,15 +39,12 @@ public class MyBatisTestApp03 {
 		}
 		System.out.println("\n");
 		
-		///////////////////////////////////////////////////////////////////////////////////
 		//==> Test 용 UserVO instance 생성
 		User user = new User("user04","주몽","user04",40,4);
 		
 		//1.User03.addUser Test
 		Object obj = session.insert("UserMapper03.addUser", user);
-		
 		session.commit(); //이 부분 반드시 해줘야 한다....mvc에서는 생략가능.
-		
 		//iBatis와 다르게 insert문의 리턴타입은 insert된 row수를 반환한다.
 		System.out.println(":: 1. addUser(INSERT)  result ? "+obj); //1
 		System.out.println("\n");
@@ -63,9 +60,7 @@ public class MyBatisTestApp03 {
 		//3.User03.uadateUser Test
 		user.setUserName("장보고");
 		int updateResult = session.update("UserMapper03.updateUser", user);
-		
 		session.commit(); //이부분 반드시 해줘야 한다.
-		
 		System.out.println(":: 3. updateUser(UPDATE) result ? "+updateResult);//1
 		System.out.println("\n");
 		
