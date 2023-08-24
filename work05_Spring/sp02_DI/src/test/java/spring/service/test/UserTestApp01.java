@@ -16,8 +16,13 @@ public class UserTestApp01 {
 		 * 이 부분에서 BeanFactory와 ApplicationContext에 대해서 비교 설명하고 넘어가자
 		 * (특히, PreLoading 하는게 왜 더 좋은지..was Servlet떄 우리는 이미 봤다. 서버 구동시 서블릿이 미리 로딩되어 있었다)
 		 */
-		BeanFactory factory = 
-				new XmlBeanFactory(new FileSystemResource("./src/main/resources/config/userservice01.xml"));
+//		BeanFactory factory = 
+//				new XmlBeanFactory(new FileSystemResource("./src/main/resources/config/userservice01.xml"));
+		
+		//설정 문서 읽어 들이는 것도 클래스패스 시스템을 인식하기에 -> src를 먹고 들어가서 경로를 다 안 적어줘도 된다. resource 이후만 작성해주면 됨.
+		
+		ApplicationContext factory = new ClassPathXmlApplicationContext("/config/userservice01.xml");
+		System.out.println("주문서를 지금 막 읽었습니다.");
 		/*
 		 * 메타데이타를 읽어올떄 미리 인스턴스 생성해서 읽어온다...
 		 * 다시 말해서 PreLoading하는데..이게 더 나은 방식.(현업에서는 BeanFactory 안쓴다)
