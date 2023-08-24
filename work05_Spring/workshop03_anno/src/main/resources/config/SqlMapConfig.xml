@@ -10,7 +10,7 @@
 	</settings>
 	
 	<typeAliases>
-		<package name="mybatis.services.domain"/>
+		<typeAlias type="spring.service.domain.MemberVO" alias="memberVO"/>
 	</typeAliases>
 	
 	<environments default="DEVELOPMENT">
@@ -26,14 +26,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="mapper/mybatis-userservice-mapping.xml"/>
-		<mapper resource="mapper/mybatis-userservice-mapping01.xml"/>
-		<mapper resource="mapper/mybatis-userservice-mapping02.xml"/>
-		<mapper resource="mapper/mybatis-userservice-mapping03.xml"/>
-		<mapper resource="mapper/mybatis-userservice-mapping05.xml"/>
-		<mapper resource="mapper/mybatis-userservice-mapping07.xml"/>
-		<mapper resource="mapper/mybatis-userservice-mapping08.xml"/>
-		<mapper resource="mapper/mybatis-userservice-mapping10.xml"/>
+		<mapper resource="mapper/mybatis-memberservice-mapping.xml"/>
 	</mappers>
 	
 </configuration>
