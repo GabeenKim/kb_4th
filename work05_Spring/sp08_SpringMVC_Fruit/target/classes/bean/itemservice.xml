@@ -4,14 +4,7 @@
     xmlns:context="http://www.springframework.org/schema/context"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
- 
- <!-- 
-1. DataSource 빈 정의 :: API Bean
-2. SqlSessionFactory 빈 정의 :: API Bean
-3. SqlSession 빈 정의 :: API Bean
-4. UserDAOImpl 빈 정의 :: User Definition Bean
-5. UserServiceImpl 빈 정의 :: User Definition Bean 
-  -->
+
 
 <context:property-placeholder location="classpath:config/dbconn.properties"/>
 
@@ -24,7 +17,7 @@
 </bean>
 
 <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="configLocation" value="config/SqlMapConfig01.xml"/>
+	<property name="configLocation" value="classpath:config/SqlMapConfig.xml"/>
 	<property name="dataSource" ref="dataSource"/>
 </bean>
 
@@ -33,13 +26,15 @@
 </bean>
 
 <!--  User Definition Bean -->
-<bean id="myBatisUserDAOImpl12"  class="mybatis.services.user.impl.MyBatisUserDAOImpl12">
-	<property name="sqlSession" ref="sqlSessionTemplate" />
-</bean>
+<context:component-scan base-package="com.service.spring"></context:component-scan>
 
-<bean id="myBatisUserServiceImpl12"   class="mybatis.services.user.impl.MyBatisUserServiceImpl12">
-	<property name="userDAO" ref="myBatisUserDAOImpl12"/>
-</bean>
+<!-- Presentation Layer Bean -->
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/WEB-INF/views/" />
+	<property name="suffix" value=".jsp" />
+</bean>	
+<context:component-scan base-package="com.service.spring" />
+
 </beans>
 
 
