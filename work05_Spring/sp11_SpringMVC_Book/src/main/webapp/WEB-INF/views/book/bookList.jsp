@@ -49,6 +49,33 @@ body, p {
 	width: 200px;
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+$(function() {
+    $('.subject').mouseover(function() {
+        var isbn=$(this).attr('id');
+        /* get 방식에서 isbn 인자값이 필요하니 ?로 연결, 데이터 타입은 콜백에서 응답해오는 결과에 대한 데이터 타입  */
+        $.ajax({
+            url:"bookDesc.do?isbn="+isbn,
+            type:"get",
+            dataType:"json",		//요청 시, 미리 응답받을 데이터의 타입을 지정.
+            error:function(xhr, status, message){
+                alert("error :"+message);
+            },
+            success:function(data){
+              /* 	alert(data); */
+            	 $('#result').html("<h5><font color=red>"
+                        +data.book.isbn+"<br>"
+                        +data["book"].title+"<br>"
+                        +data["book"].catalogue+"<br>"
+                        +data["book"].author+"<br>"
+                        +"</font></h5>"); 
+            }
+        });//ajax
+    });//mouseover
+});//function
+
+</script>
 </head>
 <body>
 	<h1>도서 목록 화면</h1>

@@ -35,7 +35,11 @@
 	
 	<select id="searchByPrice" parameterType="string" resultType="book">
 		<include refid="select-book" />
-		WHERE price &lt;=#{VALUE}
+		<![CDATA[
+			WHERE price	<=#{VALUE}
+		]]>
+		<!--&lt;,&gt; 보다 더 전문적인게 CDATA-->
+		
 	</select>
 	
 	<select id="searchByIsbn" parameterType="string" resultType="book">

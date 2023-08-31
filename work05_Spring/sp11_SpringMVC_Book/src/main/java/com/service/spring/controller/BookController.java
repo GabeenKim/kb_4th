@@ -34,7 +34,7 @@ public class BookController {
         String isbn3 = request.getParameter("isbn3").trim();
         book.setIsbn(isbn1+"-"+isbn2+"-"+isbn3);
 
-        System.out.println("register BookVO after:: "+book); //?
+        System.out.println("register BookVO after:: "+book); 
 
         String msg = "";
         String path = "Error.jsp";
@@ -58,6 +58,7 @@ public class BookController {
     public ModelAndView search(String searchField ,String searchText, HttpServletRequest request) throws Exception{  
 		System.out.println(searchField+", "+searchText);
 		List<Book> list = null;
+		String path = "find_fail";
 		try {
 			
 			switch(searchField) {
@@ -74,22 +75,47 @@ public class BookController {
 				list = bookService.searchByPrice(Integer.parseInt(searchText));
 				break;
 			default:
-				//getbook
+				list = bookService.getBooks();//getbook
 			}
-		}catch (Exception e) {
 			
+			 path = "book/bookList";
+		        request.setAttribute("field", searchField);
+		        request.setAttribute("text", searchText);
+		        
+		}catch (Exception e) {
+			 System.out.println(e);
+		        request.setAttribute("msg", "도서 검색중 오류 발생했습니다");
 		}
-		return new ModelAndView("book/bookList","list",list);
+		return new ModelAndView(path, "list", list);
 	}
 	
 	@RequestMapping("bookView.do")
     public ModelAndView bookview(String isbn, HttpServletRequest request)throws Exception{
-		//상세 페이지 searchByIsbn()..book/bookView
-		Book book = bookService.searchByIsbn(isbn);
-		return new ModelAndView("book/bookView", "b", book);
+		String path = "find_fail.jsp";
+        Book book = null;
+
+        try {
+            book = bookService.searchByIsbn(isbn);
+            path = "book/bookView";
+        }catch(Exception e) {
+            System.out.println(e);
+            request.setAttribute("msg", "isbn으로 검색중 오류 발생했습니다.");
+        }
+        return new ModelAndView(path, "b", book);  //bookView.jsp에서 key값을 b로 받고 있기 떄문.
+    }
+
+	@RequestMapping("bookDesc.do")
+	public ModelAndView desc(String isbn, HttpServletRequest request) throws Exception {
+		Book book = null;
+		try {
+			book = bookService.searchByIsbn(isbn);
+			System.out.println(book);
+		} catch (Exception e) {
+			request.setAttribute("msg", "비동기 통신 오류발생. 다시 시도해주세요.");
+		}
+		
+		return new ModelAndView("JsonView","book",book);
 	}
-
-
 
 	
 }
