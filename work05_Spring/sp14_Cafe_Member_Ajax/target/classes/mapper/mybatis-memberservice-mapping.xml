@@ -43,7 +43,7 @@
 		WHERE id=#{VALUE}
 	</select>
 	
-	<select id="idExist" resultType="string" parameterType="string">
+	<select id="idExist" parameterType="string" resultType="string">
 		SELECT id FROM member1 WHERE id=#{VALUE}
 	</select>
 	

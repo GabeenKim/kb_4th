@@ -12,7 +12,7 @@ public interface MemberDAO {
 	MemberVO getMember(String id) throws Exception;
 	List<MemberVO> showAllMember()  throws Exception;
 	MemberVO login(MemberVO vo) throws Exception;
-	String idExist(MemberVO vo) throws Exception;
+	String idExist(String id) throws Exception;
 
 }
 

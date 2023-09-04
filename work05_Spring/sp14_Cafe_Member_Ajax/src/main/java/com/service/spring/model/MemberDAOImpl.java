@@ -50,7 +50,8 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public String idExist(MemberVO vo) throws Exception {
-		return sqlSession.selectOne(NS+"idExist",vo);
+	public String idExist(String id) throws Exception {		//String인 이유 mapping.xml에 resultType에 boolean이 없어서 string으로 함 
+		
+		return sqlSession.selectOne(NS+"idExist",id);
 	}
 }

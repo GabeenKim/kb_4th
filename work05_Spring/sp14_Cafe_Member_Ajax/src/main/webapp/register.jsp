@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">  
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
  <!-- jquery cdn ::  cloudflare, google, ms, jquery -->
@@ -14,24 +15,62 @@
 <title>Insert title here</title>
 <style type="text/css">
 form{
-	width: 300px;
-	margin: 0 auto;
+    width: 300px;
+    margin: 0 auto;
 }
 </style>
+<script>
 
+    $(function(){
+        $('#id').keyup(function(){
+            var id = $(this).val();
+            //id값이 4자 이상 8자 이하 일때만 id값을 받아들이겠다.
+            if(id.length>=4 & id.length<=8){
+                //이때만 비동기 요청
+                $.ajax({
+                    //요청
+                    type :'post',
+                    url :'idExist.do',
+                    data :'id='+id, // 공백주의!!!!!!!!
+                    //응답 (callback)
+                    success:function(data){
+
+                        var jsonData = JSON.parse(data);
+                        //이미 사용중인 아이디면 idcheck 영역에 출력 
+                        if(jsonData.check == true){
+                            $('#idcheck').html('이미 사용중인 아이디입니다.').css('color','red');
+                            $('#submit_btn').attr('disabled',true);//비활성화
+                        //사용 가능한 아이디면 idcheck 영역에 출력
+                        }else{
+                            $('#idcheck').html('사용 가능한 아이디입니다.').css('color','blue');
+                            $('#submit_btn').attr('disabled',false);//비활성화
+                        }
+                    }
+                });
+
+
+            }else{ //메세지 출력
+                $('#idcheck').html('4자이상 8자이하만 가능합니다.').css('color','orange');
+                $('#submit_btn').attr('disabled',true);//비활성화
+            }
+        });
+    });
+
+</script>
 </head>
 <body>
 <div class="container">
-	<div class="jumbotron" align="center">
-		<h2>REGISTER MEMBER FORM</h2>
-	</div>
+    <div class="jumbotron" align="center">
+        <h2>REGISTER MEMBER FORM</h2>
+    </div>
 </div>
 <hr>
-<div class="container">	
-	 <form action="register.do" method="post">	
+<div class="container">
+     <form action="register.do" method="post">
     <div class="form-group">
       <label for="id">ID:</label>
-      <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id">     
+      <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id">
+      <span id="idcheck" style="margin-left:15px"></span>
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>

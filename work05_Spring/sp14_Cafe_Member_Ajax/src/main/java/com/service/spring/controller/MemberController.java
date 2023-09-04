@@ -2,6 +2,7 @@ package com.service.spring.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
@@ -44,6 +45,7 @@ public class MemberController {
 		List<MemberVO> list =null;
 		try {
 			list =memberService.showAllMember();
+			//HttpServletRequest에 데이터 바인딩 | 페이지 이동은 forward가 기본을 작동한다.
 			model.addAttribute("vo",list);
 			model.addAttribute("msg","회원 불러오기 성공");
 			path ="allView";
@@ -73,6 +75,9 @@ public class MemberController {
 		return path;
 		
 	}
+	
+
+	
 	@RequestMapping("register.do")
 	public String register(Model model, MemberVO vo )throws Exception{
 		String path="";
@@ -82,6 +87,7 @@ public class MemberController {
 			model.addAttribute("name",vo.getName());
 			model.addAttribute("msg","회원  가입 성공");
 			
+			//return redirect:/showAll.do -> 요청으로 다시 리다이렉트
 			path = "register_result";
 		} catch (Exception e) {
 			model.addAttribute("msg","회원 가입 실패");
@@ -89,7 +95,6 @@ public class MemberController {
 		}
 		
 		return path;
-		
 	}
 	
 	@RequestMapping("login.do")
@@ -104,9 +109,8 @@ public class MemberController {
 				model.addAttribute("msg","로그인 성공");
 				path ="login_result";
 			}else {
-				model.addAttribute("msg","로그인 실패");
-				path= "..spring/login";
-			}
+				    return "redirect:/index.jsp";
+				}
 		} catch (Exception e) {
 			model.addAttribute("msg","로그인 실패");
 			path= "login_fail";
@@ -114,6 +118,56 @@ public class MemberController {
 		return path;
 		
 	}
+	
+
+//	@RequestMapping("login.do")
+//    public String login(HttpServletRequest request,MemberVO pvo) throws Exception{
+//
+//        MemberVO rvo=memberService.login(pvo);
+//        if(rvo!=null) {
+//            request.getSession().setAttribute("vo", rvo);
+//            return "login_result";
+//        }else {
+//            return "redirect:/index.jsp";
+//        }
+//    }
+//	  @RequestMapping("register.do")
+//	    public String register(MemberVO pvo) throws Exception {
+//	        memberDAO.registerMember(pvo);
+//	        return "redirect:/showAll.do";
+//	    }
+//
+//		@RequestMapping("update.do")
+//	    public String update(HttpSession session, MemberVO pvo) throws Exception{
+//	        memberDAO.updateMember(pvo);
+//	        //로그인된 상태에서만 수정 가능...
+//
+//	        if(session.getAttribute("vo")!=null) {//로그인 상태라면
+//	          session.setAttribute("vo", pvo);
+//	          return "update_result";
+//	        }
+//	        return null;
+//	    }
+//		
+//	    @RequestMapping("showAll.do")
+//	    public String showAll(Model model )throws Exception {
+//	        List<MemberVO> list=memberService.showAllMember();
+//	        //HttpServletRequest에 데이타 바인딩 | 페이지 이동은 forward가 기본을 작동한다.
+//	        model.addAttribute("list", list);
+//
+//	        return "allView";
+//	    }
+//	    
+//	    @RequestMapping("logout.do")
+//	    public String logout(HttpServletRequest request) throws Exception{
+//	        HttpSession session=request.getSession();
+//	        if(session.getAttribute("vo")!=null) { //로그인된 상태라면 로그아웃
+//	            session.invalidate();//세션을 죽이고
+//	            return "logout";
+//	        }
+//	        return null;
+//	    }
+/////////////////////////////////////
 	
 	@RequestMapping("logout.do")
 	public String logout(Model model, HttpSession session)throws Exception {
@@ -131,5 +185,16 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping("idExist.do")
+	public String idExist(String id, Model model) throws Exception{
+		boolean check = false;
+		System.out.println(id);
+		String rid = memberDAO.idExist(id);
+		System.out.println(rid);
+		if(rid!=null) check = true;
+		
+		model.addAttribute("check",check);
+		return "JsonView";
+	}
 	
 }
