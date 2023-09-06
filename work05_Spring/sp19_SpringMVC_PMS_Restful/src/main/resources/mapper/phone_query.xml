@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.pms.mapper">	
+	<insert id="insert" parameterType="phone">
+		INSERT
+		INTO phones(num, model, price, vcode)
+		VALUES(#{num},#{model},#{price},#{vcode})
+	</insert>
+	
+	<!-- login으로 아이디 지정 안한 이유 : 동적 쿼리를 사용하기 위해서, pw를 입력하면 login이고 입력 X면 유저 리스트 찾기.  -->
+	<select id="selectUser" parameterType="userInfo" resultType="userInfo">
+		SELECT id, pw 
+		FROM userinfo
+		WHERE id = #{id}
+		<if test="pw!=null">
+			AND pw = #{pw}
+		</if>
+	</select>
+	
+	<resultMap type="phone" id="phoneWithCompany">
+		<id column="num" property="num"/>
+		<result column="model" property="model"/>
+		<result column="price" property="price"/>
+		<result column="vcode" property="vcode"/>
+		<association property="company" javaType="company">
+			<id column="vcode" property="vcode"/>
+			<result column="vendor" property="vendor"/>
+		</association>
+	</resultMap>
+	
+	<!-- 모든 폰 조회하기 & 특정 폰 조회하기  :: Join 사용 : 제조사코드가 아닌 제조사 명을 보여줘야 하기 때문-->
+	<!--  SqlSession(MyBatis 인터페이스)(SqlSessionTemplate :실체 클래스 이름) :::selectList(모든) , selectOne(특정)-->
+	<select id="select" parameterType="phone" resultMap="phoneWithCompany">
+		SELECT p.num, p.model, p.price, c.vcode, c.vendor
+		FROM phones p
+		JOIN company c ON(p.vcode = c.vcode)
+		<if test="num!=null">
+			WHERE num = #{num}
+		</if>
+	</select>
+	
+	<!-- 삭제 & 여러개의 num을 삭제 -->
+	<delete id="delete" parameterType="list" >
+		DELETE
+		FROM phones
+		WHERE num in 
+		<foreach collection="list" item="num" open="(" close=")" separator=",">
+			#{num}
+		</foreach>
+	</delete>
+	
+	<!-- 수정 -> 특정 폰을 수정하기 -->
+	<update id="update" parameterType="phone">
+	    UPDATE phones
+	    SET model=#{model}, price=#{price}, vcode=#{vcode}
+	    WHERE num=#{num}
+	</update>
+	
+	
+</mapper>

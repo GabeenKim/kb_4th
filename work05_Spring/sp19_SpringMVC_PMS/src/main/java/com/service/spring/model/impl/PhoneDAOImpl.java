@@ -44,4 +44,9 @@ public class PhoneDAOImpl implements PhoneDAO {
 		return sqlSession.selectOne(NS+"selectUser",user);
 	}
 
+	@Override
+	public int update(Phone phone) {
+		return sqlSession.update(NS +"update",phone);
+	}
+
 }

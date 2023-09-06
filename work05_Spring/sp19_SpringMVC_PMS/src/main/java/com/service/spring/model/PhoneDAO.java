@@ -15,4 +15,6 @@ public interface PhoneDAO {
 	//Phone select(String num);	
 	List<Phone> select();
 	UserInfo select(UserInfo user);
+	
+	int update(Phone phone);
 }

@@ -41,4 +41,11 @@ public class PhoneServiceImpl implements PhoneService{
 		return phoneDAO.select(user);
 	}
 
+	@Override
+	public int update(Phone phone) {
+		return phoneDAO.update(phone);
+	}
+	
+	
+
 }
